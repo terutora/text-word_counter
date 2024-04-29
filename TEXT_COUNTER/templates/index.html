@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字数カウンター</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>文字数カウンター</h1>
+        <textarea id="user_text" rows="4" cols="50" oninput="countCharacters()"></textarea>
+        <p>文字数: <span id="character_count">0</span>（空白無し: <span id="no_space_count">0</span>）</p>
+        <p><a href="result.html">単語数カウンター</a></p>
+    </div>
+</body>
+<script>
+function countCharacters() {
+    var text = document.getElementById("user_text").value;
+    var count = text.length;
+    document.getElementById("character_count").textContent = count;
+    
+    // 空白を削除して文字数を再計算
+    var newText = text.replace(/\s/g, '');  // 空白を削除
+    var noSpaceCount = newText.length;
+    document.getElementById("no_space_count").textContent = noSpaceCount;
+}
+</script>
+</html>

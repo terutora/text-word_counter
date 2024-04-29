@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>単語数カウンター</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>単語数カウンター</h1>
+    <textarea id="user_text" rows="4" cols="50" oninput="countWords()"></textarea>
+    <p>単語数: <span id="word_count">0</span></p>
+</body>
+<script>
+function countWords() {
+    var text = document.getElementById("user_text").value;
+    
+    // 正規表現を使用して単語ごとに分割し、配列に格納
+    var wordsArray = text.match(/\b\w+('\w+)?\b/g); // アポストロフィを含む単語も1単語としてカウント
+    
+    // 単語の数をカウント
+    var wordCount = wordsArray ? wordsArray.length : 0;
+    
+    // 結果を表示
+    document.getElementById("word_count").textContent = wordCount;
+}
+</script>
+<p><a href="index.html">文字数カウンター</a></p>
+</html>
